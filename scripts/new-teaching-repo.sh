@@ -12,8 +12,8 @@
 # Assumes:
 #   - SSH keys with push access to github.com and gitlab.com
 #   - Your server bare repos live under a known SSH path
-#   - Nextcloud teaching folder is at ~/20-Teaching/
-#   - Repos live under ~/15-Code/
+#   - Nextcloud teaching folder is at ~/20_teaching/
+#   - Repos live under ~/code/
 #
 # Usage: ./new-teaching-repo.sh <repo-name> [--private]
 
@@ -24,8 +24,8 @@ GITHUB_USER="${GITHUB_USER:-yourgithubuser}"
 GITLAB_USER="${GITLAB_USER:-yourgitlabuser}"
 SERVER_HOST="${SERVER_HOST:-yourserver}"
 SERVER_GIT_PATH="${SERVER_GIT_PATH:-/var/git}"
-CODE_DIR="${CODE_DIR:-$HOME/15-Code}"
-TEACHING_DIR="${TEACHING_DIR:-$HOME/20-Teaching}"
+CODE_DIR="${CODE_DIR:-$HOME/code}"
+TEACHING_DIR="${TEACHING_DIR:-$HOME/20_teaching}"
 # ───────────────────────────────────────────────────────────────────────────
 
 REPO_NAME="${1:-}"
@@ -82,7 +82,7 @@ Teaching materials.
 - \`build/\` — compiled PDFs (committed)
 
 Large presentation-time assets (videos, external PDFs) live in:
-\`~/20-Teaching/$REPO_NAME/\`
+\`~/20_teaching/$REPO_NAME/\`
 
 ## Building
 
@@ -166,7 +166,7 @@ cat > "$ASSETS_PATH/README.md" <<EOF
 
 Large presentation-time assets that don't fit in Git.
 
-Corresponding source repo: \`~/15-Code/$REPO_NAME/\`
+Corresponding source repo: \`~/code/$REPO_NAME/\`
 
 - \`videos/\` — video clips shown during class
 EOF

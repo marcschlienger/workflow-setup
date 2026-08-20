@@ -14,7 +14,7 @@ set -euo pipefail
 # ─── Configuration ─────────────────────────────────────────────────────────
 SERVER_HOST="${SERVER_HOST:-yourserver}"
 SERVER_GIT_PATH="${SERVER_GIT_PATH:-/var/git}"
-CODE_DIR="${CODE_DIR:-$HOME/15-Code}"
+CODE_DIR="${CODE_DIR:-$HOME/code}"
 # ───────────────────────────────────────────────────────────────────────────
 
 REPO_NAME="${1:-}"

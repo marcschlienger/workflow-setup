@@ -45,7 +45,7 @@ No GitHub or GitLab CLI is needed — only Git and SSH:
 ### `setup-nextcloud-folders.sh`
 
 One-time setup that creates the sibling folder structure at `$HOME`
-(00-Inbox through 90-Archive) and prints instructions for configuring
+(00_inbox through 90_archive) and prints instructions for configuring
 Nextcloud sync connections. Nextcloud connections must be set up
 manually via the desktop client — this script prepares the local
 targets and tells you what to pair with what.
@@ -110,7 +110,7 @@ Run from inside the repo. By default adds all three (GitHub + GitLab +
 server); pass flags to be selective.
 
 ```bash
-cd ~/15-Code/existing-project
+cd ~/code/existing-project
 /path/to/workflow-setup/scripts/add-mirrors.sh   # add all three destinations
 add-mirrors.sh --github --gitlab     # skip server (if scripts are on $PATH)
 add-mirrors.sh --server              # server only (removes GitHub push)
@@ -138,8 +138,8 @@ The scripts assume the following home layout (configurable via
 environment variables):
 
 ```
-~/15-Code/          ← Git working trees
-~/20-Teaching/      ← Nextcloud-synced teaching assets
+~/code/             ← Git working trees
+~/20_teaching/      ← Nextcloud-synced teaching assets
 ```
 
 Change `CODE_DIR` and `TEACHING_DIR` in the config if your layout differs.

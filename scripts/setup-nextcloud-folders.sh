@@ -14,16 +14,16 @@
 set -euo pipefail
 
 FOLDERS=(
-    "00-Inbox"
-    "10-Projects"
-    "15-Code"
-    "20-Teaching"
-    "30-Research"
-    "40-Admin"
-    "60-Media"
-    "70-Vault"
-    "80-Reference"
-    "90-Archive"
+    "00_inbox"
+    "10_projects"
+    "20_teaching"
+    "30_research"
+    "40_admin"
+    "60_media"
+    "70_vault"
+    "80_reference"
+    "90_archive"
+    "code"
 )
 
 echo "→ Creating sibling folder structure at $HOME"
@@ -47,7 +47,7 @@ echo "     remote folder to the local path:"
 echo ""
 for folder in "${FOLDERS[@]}"; do
     case "$folder" in
-        15-Code|60-Media)
+        code|60_media)
             echo "     $folder → (not synced via Nextcloud)"
             ;;
         *)
@@ -60,7 +60,7 @@ echo "  3. Do this once per machine that should sync these folders."
 echo "     Different machines can sync different subsets."
 echo ""
 echo "Notes:"
-echo "  - $HOME/15-Code is for Git working trees, not synced by Nextcloud."
-echo "  - $HOME/60-Media is for consumption media, managed by media apps."
-echo "  - $HOME/70-Vault holds the Cryptomator vault; the encrypted vault files"
+echo "  - $HOME/code is for Git working trees, not synced by Nextcloud."
+echo "  - $HOME/60_media is for consumption media, managed by media apps."
+echo "  - $HOME/70_vault holds the Cryptomator vault; the encrypted vault files"
 echo "    are what Nextcloud syncs. Open the vault with Cryptomator, not Files."
