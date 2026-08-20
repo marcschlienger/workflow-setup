@@ -25,5 +25,5 @@ export SERVER_HOST="yourserver"
 export SERVER_GIT_PATH="/var/git"
 
 # ─── Local directory conventions ──────────────────────────────────────────
-export CODE_DIR="$HOME/code"
+export CODE_DIR="$HOME/15_code"
 export TEACHING_DIR="$HOME/20_teaching"

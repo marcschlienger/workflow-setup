@@ -34,31 +34,35 @@ sorted together above the macOS folders (`Applications`, `Desktop`, …).
 ```
 ~/00_inbox/           ← Nextcloud sync — uncategorized incoming
 ~/10_projects/        ← Nextcloud sync — non-code current work
+~/15_code/            ← Git — versioned source, repos live here directly
 ~/20_teaching/        ← Nextcloud sync — teaching assets (videos, large media)
 ~/30_research/        ← Nextcloud sync — research domain
 ~/40_admin/           ← Nextcloud sync — admin domain
 ~/60_media/           ← media library (music, ebooks — managed by apps)
 ~/70_vault/           ← Cryptomator vault via Nextcloud (see notes)
-~/80_reference/       ← Nextcloud sync — small, searchable working reference
 ~/90_archive/         ← Nextcloud sync — done work
-
-~/code/               ← Git — versioned source, repos live here directly
 ```
 
 Each folder is a separate Nextcloud sync connection, giving flexibility to sync
 different subsets on different machines (e.g. Linux may skip `~/60_media/`; iPad
 may only see the Teaching materials it needs).
 
-`~/code/` is deliberately **unnumbered**. The numbers mark categories in the
-Nextcloud-synced organization scheme; code is not a category in that scheme but
-a different propagation mechanism (principle 1), so it stands outside the
-sequence rather than claiming a slot in it. It is also the most-typed path of
-the set, and completes on `c`.
+The decades are **areas**, not individual folders. `10–19` is "what I actively
+produce" — `10_projects` for non-code work, `15_code` for repos — while `20`
+onwards holds domain material and assets. So `15_code` is deliberate, not an
+insertion artifact, and every domain owns a full decade it can grow into
+(`21_`, `22_`, …) without renumbering anything else.
+
+Repos inside `15_code/` cut across the categories — one may be project work,
+another may belong to a domain — so the folder stays **flat**, with the domain
+carried in the repo name (`teaching-src`, `teaching-private`). Recategorizing a
+repo is then a rename at most, never a move that breaks absolute paths, IDE
+workspaces, iPad clones, or the server's bind-mount path.
 
 The relaxed PARA model keeps **Inbox, Projects, Archive** from the original,
 replaces **Areas** with explicit **domain folders** (Teaching, Research, Admin),
-and replaces **Resources** with a smaller, flat **Reference** folder plus
-dedicated Media handling.
+and drops **Resources** entirely — reference material lives in the domain it
+belongs to, with consumption media handled separately.
 
 ---
 
@@ -78,13 +82,12 @@ Two independent propagation systems, each doing what it's best at:
 
 **Rule for routing new content:**
 
-1. Source code or version-controlled work → `~/code/`
+1. Source code or version-controlled work → `~/15_code/`
 2. Uncategorized → `~/00_inbox/`
 3. Active work with a deadline → `~/10_projects/`
-4. Belongs to a specific domain → the domain folder
+4. Belongs to a specific domain → the domain folder (reference material included)
 5. Consumption media → `~/60_media/` (managed by media apps)
-6. Small searchable reference → `~/80_reference/`
-7. Done → `~/90_archive/`
+6. Done → `~/90_archive/`
 
 **Rule for build-time vs presentation-time assets:**
 
@@ -98,14 +101,14 @@ Two independent propagation systems, each doing what it's best at:
 Each teaching subject has parallel structures with the **same name** in both trees:
 
 ```
-~/code/analysis-2026/         ← Git: LaTeX source + compiled PDFs + small figures
+~/15_code/analysis-2026/      ← Git: LaTeX source + compiled PDFs + small figures
 ~/20_teaching/analysis-2026/  ← Nextcloud: large media only (< 10 files typically)
 ```
 
 **Everything for a lesson except the largest assets lives in the Git repo:**
 
 ```
-~/code/analysis-2026/
+~/15_code/analysis-2026/
   lectures/          ← LaTeX source
   slides/            ← LaTeX source
   problem-sets/      ← LaTeX source
@@ -240,9 +243,9 @@ Live in `~/60_media/`, managed by their respective apps (Music.app, Calibre,
 Apple Books, etc.). Not synced via Nextcloud unless the collection is small.
 For larger libraries, use a media server (Jellyfin, Navidrome) or streaming.
 
-Never mix consumption media with working reference. `~/80_reference/` stays
-small and searchable; `~/60_media/` holds the large consumption libraries with
-their own tooling.
+Keep consumption media out of the working folders: `~/60_media/` holds the
+large libraries with their own tooling, while reference material you actually
+work with stays in its domain folder.
 
 ### Teaching videos
 
@@ -266,8 +269,12 @@ Ideas considered and rejected during the discussion, with reasons:
   GitHub + GitLab redundancy replaces it.
 - **`.repo` folder suffix + Nextcloud exclusion patterns** — solved the wrong
   problem; keeping repos out of PARA entirely is cleaner.
-- **Manifest file bridging PARA and `~/code/`** — became unnecessary once repos
-  moved to `~/code/` as a sibling folder rather than being hidden inside PARA.
+- **Manifest file bridging PARA and `~/15_code/`** — became unnecessary once
+  repos moved to `~/15_code/` as a sibling folder rather than being hidden
+  inside PARA.
+- **A separate Reference folder (PARA's Resources)** — every piece of reference
+  material already belongs to a domain, so it lives there. Principle 3: add the
+  folder if a genuinely cross-domain pile ever appears, not before.
 - **iCloud PDF delivery pipeline (Mac-as-bridge)** — obviated by Working Copy on
   iPad and by committing PDFs to the repo.
 - **Server bare repo as agent mirror** — solved problems (speed, rate limits,
@@ -287,7 +294,7 @@ Ideas considered and rejected during the discussion, with reasons:
                             │  clone/pull
                             │
 Workstation  ──────────────┤
-  ~/code/*  ───────────────┤
+  ~/15_code/*  ────────────┤
   ~/20_teaching/*  ────────┼──── Nextcloud server ──── iPad
                             │                              │
                             │                              └── Working Copy (Git)
@@ -313,7 +320,7 @@ Not everything needs to happen at once. A reasonable order:
 
 1. **Reorganize Nextcloud into individual folder syncs** (each PARA folder as
    its own connection). This alone unlocks many of the flexibility gains.
-2. **Move Git repos to `~/code/`** as a sibling to PARA folders. Natural
+2. **Move Git repos to `~/15_code/`** as a sibling to PARA folders. Natural
    names, no exclusion patterns.
 3. **Set up multi-remote push** on existing repos (GitHub + GitLab + server).
 4. **Commit compiled PDFs** to teaching repos. Add `build.sh` and `.gitattributes`.

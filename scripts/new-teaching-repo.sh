@@ -13,7 +13,7 @@
 #   - SSH keys with push access to github.com and gitlab.com
 #   - Your server bare repos live under a known SSH path
 #   - Nextcloud teaching folder is at ~/20_teaching/
-#   - Repos live under ~/code/
+#   - Repos live under ~/15_code/
 #
 # Usage: ./new-teaching-repo.sh <repo-name> [--private]
 
@@ -24,7 +24,7 @@ GITHUB_USER="${GITHUB_USER:-yourgithubuser}"
 GITLAB_USER="${GITLAB_USER:-yourgitlabuser}"
 SERVER_HOST="${SERVER_HOST:-yourserver}"
 SERVER_GIT_PATH="${SERVER_GIT_PATH:-/var/git}"
-CODE_DIR="${CODE_DIR:-$HOME/code}"
+CODE_DIR="${CODE_DIR:-$HOME/15_code}"
 TEACHING_DIR="${TEACHING_DIR:-$HOME/20_teaching}"
 # ───────────────────────────────────────────────────────────────────────────
 
@@ -166,7 +166,7 @@ cat > "$ASSETS_PATH/README.md" <<EOF
 
 Large presentation-time assets that don't fit in Git.
 
-Corresponding source repo: \`~/code/$REPO_NAME/\`
+Corresponding source repo: \`~/15_code/$REPO_NAME/\`
 
 - \`videos/\` — video clips shown during class
 EOF

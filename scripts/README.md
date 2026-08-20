@@ -110,7 +110,7 @@ Run from inside the repo. By default adds all three (GitHub + GitLab +
 server); pass flags to be selective.
 
 ```bash
-cd ~/code/existing-project
+cd ~/15_code/existing-project
 /path/to/workflow-setup/scripts/add-mirrors.sh   # add all three destinations
 add-mirrors.sh --github --gitlab     # skip server (if scripts are on $PATH)
 add-mirrors.sh --server              # server only (removes GitHub push)
@@ -138,7 +138,7 @@ The scripts assume the following home layout (configurable via
 environment variables):
 
 ```
-~/code/             ← Git working trees
+~/15_code/          ← Git working trees
 ~/20_teaching/      ← Nextcloud-synced teaching assets
 ```
 

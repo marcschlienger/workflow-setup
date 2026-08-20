@@ -17,7 +17,7 @@ agent sandboxes, Working Copy for iPad access.
 
 Two propagation systems, each doing what it's best at: Nextcloud syncs
 documents, media, and teaching assets across PARA-style sibling folders in
-`$HOME`; Git versions code and LaTeX in `~/code/`, pushing to GitHub +
+`$HOME`; Git versions code and LaTeX in `~/15_code/`, pushing to GitHub +
 GitLab + a self-hosted bare repo in one `git push` (sensitive repos go to the
 server only). AI agents run in persistent Incus VMs with repos bind-mounted
 from the server — no agent credentials — provisioned by the separate
